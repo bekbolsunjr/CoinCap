@@ -54,6 +54,8 @@ internal final class MainCell: UITableViewCell {
         costUSDLabel.text = "$ \(stringExt(from: costUSD))"
         symbolLabel.text = symbol
         changePercent24HrLabel.text = stringExt(from: changePercent24Hr)
+        var isPositive = !changePercent24Hr.contains("-")
+        changePercent24HrLabel.textColor =  isPositive ? UIColor.green : UIColor.red
     }
     
     func stringExt(from numberString: String) -> String {
