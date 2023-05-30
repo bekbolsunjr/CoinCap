@@ -19,7 +19,7 @@ internal final class DetailPresentable: PresentableView {
     
     internal var marketCapUsd: UILabel = .init()
     internal var supply: UILabel = .init()
-    internal var volume24hValue: UILabel = .init()
+    internal var volumeUsd24Hr: UILabel = .init()
     
     internal var fourStackView: UIStackView = .init()
     
@@ -40,7 +40,7 @@ internal final class DetailPresentable: PresentableView {
         addSubview(thredStakView)
         thredStakView.addArrangedSubview(marketCapUsd)
         thredStakView.addArrangedSubview(supply)
-        thredStakView.addArrangedSubview(volume24hValue)
+        thredStakView.addArrangedSubview(volumeUsd24Hr)
         
         addSubview(fourStackView)
         fourStackView.addArrangedSubview(firstStakView)
@@ -71,7 +71,6 @@ internal final class DetailPresentable: PresentableView {
         thredStakView.axis = .horizontal
         thredStakView.spacing = 5
         thredStakView.distribution = .fillEqually
-        volume24hValue.text = "$3.52b"
         
         //MARK: FourStakView
         fourStackView.axis = .vertical

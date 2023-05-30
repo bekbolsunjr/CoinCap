@@ -12,6 +12,8 @@ internal enum DetailViewModelContract {
         let priceUsd: Driver<String>
         let changePercent24Hr: Driver<String>
         let marketCapUsd: Driver<String>
+        let supply: Driver<String>
+        let volumeUsd24Hr: Driver<String>
         let disposables: [Disposable]
         
         
@@ -43,6 +45,8 @@ extension DetailViewModelImpl: DetailViewModel {
             priceUsd: items.asDriver().map {$0.priceUsd!},
             changePercent24Hr: items.asDriver().map {$0.changePercent24Hr!},
             marketCapUsd: items.asDriver().map {$0.marketCapUsd!},
+            supply: items.asDriver().map {$0.supply!},
+            volumeUsd24Hr: items.asDriver().map {$0.volumeUsd24Hr!},
             //avatarURLString: items.asDriver().map {URL(string: $0.avatar)},
             disposables: disposables)
     }

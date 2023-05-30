@@ -6,6 +6,7 @@ internal final class MainCell: UITableViewCell {
     private lazy var nameLabel: UILabel = LabelBuilder().build()
     private lazy var costUSDLabel: UILabel = LabelBuilder().build()
     private lazy var symbolLabel: UILabel = LabelBuilder().build()
+    private lazy var changePercent24HrLabel: UILabel = LabelBuilder().build()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,6 +22,7 @@ internal final class MainCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(costUSDLabel)
         addSubview(symbolLabel)
+        addSubview(changePercent24HrLabel)
     }
     
     private func onSetupConstraints() {
@@ -30,24 +32,36 @@ internal final class MainCell: UITableViewCell {
             $0.right.equalTo(super.snp.centerX)
         }
         costUSDLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().offset(15)
-            $0.left.equalTo(super.snp.centerX)
+            $0.top.equalTo(nameLabel.snp.top)
+            $0.right.equalToSuperview()
         }
         symbolLabel.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom)
             $0.left.equalToSuperview().offset(15)
             $0.right.equalTo(super.snp.centerX)
         }
+        changePercent24HrLabel.snp.makeConstraints {
+            $0.top.equalTo(symbolLabel.snp.top)
+            $0.right.equalToSuperview()
+        }
         
   
     }
     
-    internal func configureCell(name: String, costUSD: String, symbol: String) {
+    internal func configureCell(name: String, costUSD: String, symbol: String, changePercent24Hr: String) {
         
         nameLabel.text = name
-        costUSDLabel.text = "$ \(costUSD)"
+        costUSDLabel.text = "$ \(stringExt(from: costUSD))"
         symbolLabel.text = symbol
+        changePercent24HrLabel.text = stringExt(from: changePercent24Hr)
+    }
+    
+    func stringExt(from numberString: String) -> String {
+        if let dotIndex = numberString.firstIndex(of: ".") {
+            let endIndex = numberString.index(dotIndex, offsetBy: 3)
+            return String(numberString[..<endIndex])
+        }
+        return numberString
     }
     
  
