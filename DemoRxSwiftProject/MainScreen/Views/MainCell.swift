@@ -82,6 +82,7 @@ internal final class MainCell: UITableViewCell {
         iconImage.contentMode = .scaleAspectFit
     }
     
+    
     func stringExt(from numberString: String) -> String {
         if let dotIndex = numberString.firstIndex(of: ".") {
             let endIndex = numberString.index(dotIndex, offsetBy: 3)
